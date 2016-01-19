@@ -19,13 +19,13 @@ module Domaine
       end
 
       def test_une_région_peut_modifier_son_biome
-        @région.modifier_biome(:désert)
+        @région.modifie_le_biome(:désert)
 
         assert @région.biome?(:désert)
       end
 
       def test_une_région_peut_avoir_plusieurs_biomes
-        @région.modifier_biome(:plaine, :colline)
+        @région.modifie_le_biome(:plaine, :colline)
 
         assert @région.biome?(:plaine)
         assert @région.biome?(:colline)

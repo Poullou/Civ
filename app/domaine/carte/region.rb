@@ -13,7 +13,7 @@ module Domaine
         @biomes.include?(biome)
       end
 
-      def modifier_biome(*biomes)
+      def modifie_le_biome(*biomes)
         @biomes = biomes
       end
     end
