@@ -39,7 +39,7 @@ module Domaine
       end
 
       def ajoute_une_banquise_à_la_latitude(latitude)
-        latitudes[latitude].each{ |région| région && région.modifier_écozone(:glace) }
+        latitudes[latitude].each{ |région| région && région.modifier_biome(:glace) }
       end
 
       def ajoute_des_icebergs_à_la_latitude(latitude)
@@ -49,7 +49,7 @@ module Domaine
 
       def ajoute_un_iceberg(région, icebergs_disponibles)
         if région && rand(taille) < taille / 3 && icebergs_disponibles > 0
-          région.modifier_écozone(:glace)
+          région.modifier_biome(:glace)
           icebergs_disponibles -= 1
         end
         icebergs_disponibles

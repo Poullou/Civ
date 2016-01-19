@@ -13,22 +13,22 @@ module Domaine
         assert @région.position?(Position::Point.new(0, 0))
       end
 
-      def test_une_région_est_par_défaut_une_écozone_océan
-        assert @région.écozone?(:océan)
-        refute @région.écozone?(:plaine)
+      def test_une_région_est_par_défaut_un_biome_océan
+        assert @région.biome?(:océan)
+        refute @région.biome?(:plaine)
       end
 
-      def test_une_région_peut_modifier_son_écozone
-        @région.modifier_écozone(:désert)
+      def test_une_région_peut_modifier_son_biome
+        @région.modifier_biome(:désert)
 
-        assert @région.écozone?(:désert)
+        assert @région.biome?(:désert)
       end
 
-      def test_une_région_peut_avoir_plusieurs_écozones
-        @région.modifier_écozone(:plaine, :colline)
+      def test_une_région_peut_avoir_plusieurs_biomes
+        @région.modifier_biome(:plaine, :colline)
 
-        assert @région.écozone?(:plaine)
-        assert @région.écozone?(:colline)
+        assert @région.biome?(:plaine)
+        assert @région.biome?(:colline)
       end
     end
   end

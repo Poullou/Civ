@@ -60,7 +60,7 @@ module Domaine
       private
 
       def taille_de_la_banquise(monde, latitude)
-        monde.latitudes[latitude].select{ |région| région && région.écozone?(:glace) }.size
+        monde.latitudes[latitude].select{ |région| région && région.biome?(:glace) }.size
       end
     end
   end

@@ -6,15 +6,15 @@ module Domaine
       def initialize(latitude, longitude)
         @latitude = latitude
         @longitude = longitude
-        @écozones = [:océan]
+        @biomes = [:océan]
       end
 
-      def écozone?(écozone)
-        @écozones.include?(écozone)
+      def biome?(biome)
+        @biomes.include?(biome)
       end
 
-      def modifier_écozone(*écozones)
-        @écozones = écozones
+      def modifier_biome(*biomes)
+        @biomes = biomes
       end
     end
   end
