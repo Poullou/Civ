@@ -1,5 +1,5 @@
 module Domaine
-  module Carte
+  class Monde
     class Region
       include Position::Positionnable
 

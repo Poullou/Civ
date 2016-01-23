@@ -1,7 +1,7 @@
 require 'test_helper'
 
 module Domaine
-  module Carte
+  class Monde
     class RegionTest < Minitest::Test
 
       def setup
