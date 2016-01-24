@@ -9,8 +9,7 @@ module Domaine
       end
 
       def ==(autre_point)
-        @latitude == autre_point.latitude
-        @longitude == autre_point.longitude
+        @latitude == autre_point.latitude && @longitude == autre_point.longitude
       end
     end
   end

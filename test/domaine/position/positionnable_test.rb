@@ -23,7 +23,8 @@ module Domaine
 
       def test_peut_vérifier_sa_position
         assert @dummy.position?(Point.new(10, 10))
-        refute @dummy.position?(Point.new(0, 0))
+        refute @dummy.position?(Point.new(0, 10))
+        refute @dummy.position?(Point.new(10, 0))
       end
 
       def test_peut_donner_la_position_nord
@@ -48,6 +49,14 @@ module Domaine
 
       def test_peut_donner_la_position_nord_ouest
         assert_equal Point.new(9, 9), @dummy.position_nord_ouest
+      end
+
+      def test_peut_vérifier_si_adjacent_à_une_autre_position
+        assert @dummy.adjacent?(Dummy.new(8, 10))
+        assert @dummy.adjacent?(Dummy.new(9, 9))
+
+        refute @dummy.adjacent?(Dummy.new(12, 12))
+        refute @dummy.adjacent?(Dummy.new(10, 10))
       end
     end
   end

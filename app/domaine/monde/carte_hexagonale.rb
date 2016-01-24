@@ -24,6 +24,14 @@ module Domaine
         end
       end
 
+      def une_région
+        @régions[*position_aléatoire]
+      end
+
+      def région_à_la_position(position)
+        @régions[position.latitude, position.longitude]
+      end
+
       private
 
       def hauteur_et_longueur_par_taille(taille)
@@ -36,6 +44,14 @@ module Domaine
 
       def emplacement_valide?(latitude, longitude)
         (latitude.even? && longitude.even?) || (latitude.odd? && longitude.odd?)
+      end
+
+      def position_aléatoire
+        latitude = rand(hauteur)
+        longitude = rand(longueur / 2) * 2
+        longitude += 1 if latitude.odd?
+        longitude -= 2 if longitude >= longueur
+        [latitude, longitude]
       end
     end
   end

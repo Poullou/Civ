@@ -35,6 +35,8 @@ module Domaine
     def test_le_pole_nord_est_couvert_par_la_banquise
       monde = Monde.new
 
+      Monde::Banquise.new(monde.carte).ajoute_la_banquise
+
       assert_equal 75, taille_de_la_banquise_à_la_latitude(monde, 0)
       assert_equal 75, taille_de_la_banquise_à_la_latitude(monde, 1)
     end
@@ -42,8 +44,20 @@ module Domaine
     def test_le_pole_sud_est_couvert_par_la_banquise
       monde = Monde.new
 
+      Monde::Banquise.new(monde.carte).ajoute_la_banquise
+
       assert_equal 75, taille_de_la_banquise_à_la_latitude(monde, 99)
       assert_equal 75, taille_de_la_banquise_à_la_latitude(monde, 98)
+    end
+
+    def test_peut_créer_une_île_avec_un_climat
+      monde = Monde.new
+
+      île = monde.ajoute_une_île(:tempéré)
+
+      assert île.size > 0
+      assert île.size <= 10
+      assert île.all?{ |région| île.any?{ |autre_région| région.adjacent?(autre_région) }}
     end
 
     private
