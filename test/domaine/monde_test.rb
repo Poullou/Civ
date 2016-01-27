@@ -1,8 +1,11 @@
 require 'test_helper'
 
-
 module Domaine
   class MondeTest < Minitest::Test
+
+    def test_un_monde_est_une_entité
+      assert Monde.new.is_a? Entité
+    end
 
     def test_un_monde_a_une_taille_petite_par_défaut
       monde = Monde.new

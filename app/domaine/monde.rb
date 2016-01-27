@@ -1,6 +1,7 @@
 module Domaine
   class Monde
-    attr_reader :carte
+    include Entité
+    attr_reader :carte, :options
 
     def initialize(options = {})
       @options = options
