@@ -60,7 +60,7 @@ module Domaine
 
       assert île.size > 0
       assert île.size <= 10
-      assert île.all?{ |région| île.any?{ |autre_région| région.adjacent?(autre_région) }}
+      assert île.size == 1 || île.all?{ |région| île.any?{ |autre_région| région.adjacent?(autre_région) }}
     end
 
     private

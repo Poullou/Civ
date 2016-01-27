@@ -9,7 +9,7 @@ module Domaine
     end
 
     def ajoute_une_île(climat)
-      construit_une_écozone(rand(10) + 1, climat)
+      construit_une_écozone(rand(9) + 1, climat)
     end
 
     private
@@ -27,6 +27,7 @@ module Domaine
         modifie_le_climat(région, climat)
         écozone << région
         région = nouvelle_région_adjacente_à_modifier(écozone)
+        break if région.nil?
       end
       écozone
     end
@@ -37,7 +38,7 @@ module Domaine
 
     def nouvelle_région_adjacente_à_modifier(régions_modifiées)
       loop do
-        région = @carte.région_à_la_position(régions_modifiées.last.quelque_part_autour)
+        région = @carte.région_à_la_position(régions_modifiées.last.quelque_part_autour(latitude_min: 0, latitude_max: @carte.hauteur))
         return région unless régions_modifiées.include?(région)
       end
     end
