@@ -8,7 +8,7 @@ module Domaine
     end
 
     def ajoute_une_île(climat)
-      construit_une_écozone(rand(10), climat)
+      construit_une_écozone(rand(10) + 1, climat)
     end
 
     private
