@@ -1,7 +1,7 @@
 require 'test_helper'
 
 module Persistance
-  class DepotMondeTestIntegration < Minitest::Test
+  class DepotMondeIntegration < Minitest::Test
 
     def setup
       purge_database
