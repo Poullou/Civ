@@ -56,11 +56,11 @@ module Domaine
     def test_peut_créer_une_île_avec_un_climat
       monde = Monde.new
 
-      île = monde.ajoute_une_île(:tempéré)
+      île = Monde::Ile.new(monde.carte).ajoute_une_île
 
-      assert île.size > 0
-      assert île.size <= 10
-      assert île.size == 1 || île.all?{ |région| île.any?{ |autre_région| région.adjacent?(autre_région) }}
+      assert île.size > 0, "L'île est trop petite"
+      assert île.size <= Monde::Ile::TAILLE_MAX, "L'île est trop grande"
+      assert île.size == 1 || île.all?{ |région| île.any?{ |autre_région| région.adjacent?(autre_région) }}, 'Les régions ne sont pas adjacentes'
     end
 
     private
