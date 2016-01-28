@@ -42,6 +42,18 @@ module Domaine
       assert_equal 300, monde.carte.longueur
     end
 
+    def test_peut_lister_les_régions
+      monde = Monde.new
+      prairie = monde.carte.une_région
+      prairie.modifie_le_biome(:prairie)
+
+      régions = monde.liste_des_régions
+
+      assert_equal monde.carte.hauteur * monde.carte.longueur / 2, régions.size
+      assert régions.all?{ |région| région.biome?(:océan) || région.biome?(:prairie) }
+      assert régions.any?{ |région| région.biome?(:prairie) && région.position == prairie.position }
+    end
+
     def test_le_pole_nord_est_couvert_par_la_banquise
       monde = Monde.new
 

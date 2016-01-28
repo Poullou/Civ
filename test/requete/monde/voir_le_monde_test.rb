@@ -13,8 +13,8 @@ module Requete
 
         hash_monde = requete.exécute(monde.id)
 
-        assert_equal 100 * 150 / 2,  hash_monde[:régions].size
-        assert hash_monde[:régions].any?{ |hash_région| hash_région[:biomes].include?(:prairie) }
+        assert_equal monde.carte.hauteur * monde.carte.longueur / 2,  hash_monde[:régions].size
+        assert hash_monde[:régions].all?{ |hash_région| hash_région[:biomes].include?(:océan) || hash_région[:biomes].include?(:prairie) }
         assert hash_monde[:régions].all?{ |hash_région| hash_région[:latitude] && hash_région[:longitude] }
       end
     end
