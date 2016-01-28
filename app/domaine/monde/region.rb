@@ -2,6 +2,7 @@ module Domaine
   class Monde
     class Region
       include Position::Positionnable
+      attr_reader :biomes
 
       def initialize(latitude, longitude)
         @latitude = latitude

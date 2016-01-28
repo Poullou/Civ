@@ -19,8 +19,8 @@ module Domaine
       end
 
       def régions_à_la_latitude(latitude)
-        @régions.row_vectors[latitude].each do |région|
-          yield(région) if block_given? && région
+        @régions.row_vectors[latitude].to_a.compact.each do |région|
+          yield(région) if block_given?
         end
       end
 
