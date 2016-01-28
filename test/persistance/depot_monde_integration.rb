@@ -1,11 +1,11 @@
 require 'test_helper'
 
 module Persistance
-  class DepotMondeIntegration < Minitest::Test
+  class DépôtMondeIntegration < Minitest::Test
 
     def setup
       purge_database
-      @dépot = DepotMonde.new
+      @dépot = DépôtMonde.new
     end
 
     def test_peut_stocker_un_monde

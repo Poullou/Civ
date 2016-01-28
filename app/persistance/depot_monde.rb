@@ -1,5 +1,5 @@
 module Persistance
-  class DepotMonde
+  class DépôtMonde
 
     def dépose!(monde)
       Mapping::Monde.depuis_le_domaine(monde).save!

@@ -3,7 +3,7 @@ module Requete
     class VoirLeMonde
 
       def exécute(id)
-        @monde = Persistance::DepotMonde.new.récupère!(id)
+        @monde = Persistance::DépôtMonde.new.récupère!(id)
         hash_monde = { régions: [] }
         ajoute_les_régions(hash_monde)
         hash_monde

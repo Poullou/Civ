@@ -8,7 +8,7 @@ module Requete
         monde = Domaine::Monde.new
         monde.carte.une_région.modifie_le_biome(:prairie)
         monde.génère_un_id
-        Persistance::DepotMonde.any_instance.expects(:récupère!).with(monde.id).returns(monde).once
+        Persistance::DépôtMonde.any_instance.expects(:récupère!).with(monde.id).returns(monde).once
         requete = VoirLeMonde.new
 
         hash_monde = requete.exécute(monde.id)
