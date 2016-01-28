@@ -49,9 +49,9 @@ module Domaine
 
       régions = monde.liste_des_régions
 
-      assert_equal monde.carte.hauteur * monde.carte.longueur / 2, régions.size
-      assert régions.all?{ |région| région.biome?(:océan) || région.biome?(:prairie) }
-      assert régions.any?{ |région| région.biome?(:prairie) && région.position == prairie.position }
+      assert_equal monde.carte.hauteur * monde.carte.longueur / 2, régions.size, 'Le nombre de régions listées est faux'
+      assert régions.all?{ |région| région.biome?(:océan) || région.biome?(:prairie) }, "Au moins une région n'a pas le bon biome"
+      assert régions.any?{ |région| région.biome?(:prairie) && région.position == prairie.position } "La prairie est au bon endroit"
     end
 
     def test_le_pole_nord_est_couvert_par_la_banquise
@@ -59,8 +59,8 @@ module Domaine
 
       Monde::Banquise.new(monde.carte).ajoute_la_banquise
 
-      assert_equal 75, taille_de_la_banquise_à_la_latitude(monde, 0)
-      assert_equal 75, taille_de_la_banquise_à_la_latitude(monde, 1)
+      assert_equal 75, taille_de_la_banquise_à_la_latitude(monde, 0), 'La première couche de la banquise nord est incomplète'
+      assert_equal 75, taille_de_la_banquise_à_la_latitude(monde, 1), 'La seconde couche de la banquise nord est incomplète'
     end
 
     def test_le_pole_sud_est_couvert_par_la_banquise
@@ -68,8 +68,8 @@ module Domaine
 
       Monde::Banquise.new(monde.carte).ajoute_la_banquise
 
-      assert_equal 75, taille_de_la_banquise_à_la_latitude(monde, 99)
-      assert_equal 75, taille_de_la_banquise_à_la_latitude(monde, 98)
+      assert_equal 75, taille_de_la_banquise_à_la_latitude(monde, 99), 'La première couche de la banquise sud est incomplète'
+      assert_equal 75, taille_de_la_banquise_à_la_latitude(monde, 98), 'La seconde couche de la banquise sud est incomplète'
     end
 
     def test_peut_créer_une_île_avec_un_climat
