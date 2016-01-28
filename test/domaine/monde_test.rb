@@ -35,6 +35,13 @@ module Domaine
       assert_equal 450, monde.carte.longueur
     end
 
+    def test_peut_utiliser_un_string_au_lieu_d_un_symbole_pour_la_taille
+      monde = Monde.new(taille: 'normal')
+
+      assert_equal 200, monde.carte.hauteur
+      assert_equal 300, monde.carte.longueur
+    end
+
     def test_le_pole_nord_est_couvert_par_la_banquise
       monde = Monde.new
 

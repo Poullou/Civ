@@ -36,10 +36,10 @@ module Domaine
 
       def hauteur_et_longueur_par_taille(taille)
         {
-          petit: [100, 150],
-          normal: [200, 300],
-          grand: [300, 450]
-        }[taille] || [100, 150]
+          'petit' => [100, 150],
+          'normal' => [200, 300],
+          'grand' => [300, 450]
+        }[taille.to_s] || [100, 150]
       end
 
       def emplacement_valide?(latitude, longitude)
