@@ -51,7 +51,7 @@ module Domaine
 
       assert_equal monde.carte.hauteur * monde.carte.longueur / 2, régions.size, 'Le nombre de régions listées est faux'
       assert régions.all?{ |région| région.biome?(:océan) || région.biome?(:prairie) }, "Au moins une région n'a pas le bon biome"
-      assert régions.any?{ |région| région.biome?(:prairie) && région.position == prairie.position } "La prairie est au bon endroit"
+      assert régions.any?{ |région| région.biome?(:prairie) && région.position == prairie.position }, "La prairie est au bon endroit"
     end
 
     def test_le_pole_nord_est_couvert_par_la_banquise
