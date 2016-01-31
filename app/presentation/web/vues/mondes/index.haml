@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %title Civ
+    %script{ type: :'text/javascript', src: 'http://code.jquery.com/jquery-2.2.0.min.js' }
+    %script{ type: :'text/javascript', src: 'javascript/bibliotheques/uuid.js'}
+    %script{ type: :'text/javascript', src: 'javascript/bus.js'}
+    %script{ type: :'text/javascript', src: 'javascript/modeles/monde.js'}
+  %body
+    %monde
+    %mondes
+      %ul
+      %button#creer-un-monde
+        Créer un monde
+    %script#template-monde{ type: :'text/template' }
+      %li
+    :javascript
+      var monde = new Monde(new Bus());
+      monde.écouteLesEvènements();
+      $('#creer-un-monde').click(function(){
+        monde.crée();
+      })

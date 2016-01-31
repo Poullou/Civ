@@ -2,3 +2,9 @@
 # Civ
 
 Work in progress
+
+Run web server :
+
+  ```
+    bundle exec rackup bin/config.ru
+  ```
