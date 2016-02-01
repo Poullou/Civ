@@ -6,18 +6,18 @@ class Bus {
     }
   }
 
-  requête(paramètres){
+  requête(origine, paramètres){
     var that = this
     $.ajax({
       url: this.configuration['baseApi'] + paramètres['url'],
       method: paramètres['method'],
       data: paramètres['data'],
-      dataType: paramètres['dataType'],
+      dataType: 'json',
       success: function(réponse){
-        that.déclenche(paramètres['success'], { requête: paramètres['data'], réponse: réponse })
+        that.déclenche(paramètres['event'], { origine: origine, réponse: réponse })
       },
       error: function(){
-        that.déclenche(paramètres['error'], paramètres['data'])
+        that.déclenche('erreur')
       }
     })
   }

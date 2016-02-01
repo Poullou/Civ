@@ -1,0 +1,50 @@
+
+.region{
+  position: absolute;
+}
+
+.océan{
+  background-color: #64C7CC;
+}
+
+.prairie{
+  background-color: #26C94F;
+}
+
+.glace{
+  background-color: #FFFFFF;
+}
+
+.hexagone {
+  width: 150px;
+  height: 86.60px;
+  margin: 43.30px 0;
+  border-left: solid 1px #333333;
+  border-right: solid 1px #333333;
+}
+
+.hexagone:before,
+.hexagone:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  width: 106.07px;
+  height: 106.07px;
+  -webkit-transform: scaleY(0.5774) rotate(-45deg);
+  -ms-transform: scaleY(0.5774) rotate(-45deg);
+  transform: scaleY(0.5774) rotate(-45deg);
+  background-color: inherit;
+  left: 20.9670px;
+}
+
+.hexagone:before {
+  top: -53.0330px;
+  border-top: solid 1.4142px #333333;
+  border-right: solid 1.4142px #333333;
+}
+
+.hexagone:after {
+  bottom: -53.0330px;
+  border-bottom: solid 1.4142px #333333;
+  border-left: solid 1.4142px #333333;
+}

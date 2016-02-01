@@ -2,21 +2,34 @@
 %html
   %head
     %title Civ
+    %link{ rel: :stylesheet, type: :'text/css', href: '/style/monde.css' }
     %script{ type: :'text/javascript', src: 'http://code.jquery.com/jquery-2.2.0.min.js' }
-    %script{ type: :'text/javascript', src: 'javascript/bibliotheques/uuid.js'}
-    %script{ type: :'text/javascript', src: 'javascript/bus.js'}
-    %script{ type: :'text/javascript', src: 'javascript/modeles/monde.js'}
+    %script{ type: :'text/javascript', src: 'script/bibliotheques/uuid.js'}
+    %script{ type: :'text/javascript', src: 'script/bus.js'}
+    %script{ type: :'text/javascript', src: 'script/modeles/monde.js'}
   %body
-    %monde
-    %mondes
+    #monde
+    #mondes
       %ul
       %button#creer-un-monde
         Créer un monde
     %script#template-monde{ type: :'text/template' }
       %li
     :javascript
-      var monde = new Monde(new Bus());
-      monde.écouteLesEvènements();
+      var bus = new Bus();
+      Monde.écouteLesEvènements(bus);
       $('#creer-un-monde').click(function(){
-        monde.crée();
+        new Monde(bus).crée();
+      })
+      bus.écoute('mondeRécupéré', function(évènement, paramètres){
+        $('#monde').html('')
+        paramètres.origine.régions.forEach(function(région){
+          var héxagone = $('<div class="hexagone region"></div>')
+          héxagone.addClass(région.biomes.join(' '))
+          héxagone.css({
+            top: (région.latitude * 130) + 'px',
+            left: (région.longitude / 2 * 150) + 'px'
+          })
+          $('#monde').append(héxagone)
+        })
       })
