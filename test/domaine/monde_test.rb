@@ -72,6 +72,12 @@ module Domaine
       assert_equal 75, taille_de_la_banquise_à_la_latitude(monde, 98), 'La seconde couche de la banquise sud est incomplète'
     end
 
+    def test_peut_définir_pour_chaque_région_les_régions_autour
+      monde = Monde.new
+
+      assert monde.liste_des_régions.all?{ |région| région.régions_autour }, "Des régions n'ont pas encore connaissance de leur voisine"
+    end
+
     def test_peut_créer_une_île_avec_un_climat
       monde = Monde.new
 
@@ -79,7 +85,7 @@ module Domaine
 
       assert île.size > 0, "L'île est trop petite"
       assert île.size <= Monde::Ile::TAILLE_MAX, "L'île est trop grande"
-      assert île.size == 1 || île.all?{ |région| île.any?{ |autre_région| région.adjacent?(autre_région) }}, 'Les régions ne sont pas adjacentes'
+      assert île.size == 1 || île.all?{ |région| île.any?{ |autre_région| région.voisine?(autre_région) }}, 'Les régions ne sont pas voisines'
     end
 
     private
